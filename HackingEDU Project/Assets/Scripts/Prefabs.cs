@@ -23,7 +23,7 @@ public class Prefabs : MonoBehaviour {
     public static Object mrna;
     public static Object proteins;
     public static Object poison;
-    public static object amino;
+    public static Object amino;
 
 	// Use this for initialization
 	void Start () {
