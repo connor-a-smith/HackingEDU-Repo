@@ -32,6 +32,11 @@ public class Prefabs : MonoBehaviour {
 	  atp = atpPrefab;
 	  ribosome = ribosomePrefab;
 	  glucose = glucosePrefab;
+	  nucleus = nucleusPrefab;
+	  mrna = mrnaPrefab;
+	  proteins = proteinPrefab;
+	  poison = poisonPrefab;
+	  amino = aminoPrefab;
 	  
 	
 	}

@@ -34,7 +34,7 @@ public class CellIO : MonoBehaviour {
     }
     
     else if (type == InfoStrings.nucleus) {
-      if (inputs[atpIndex] && inputs[proteinIndex]) {
+      if (inputs[atpIndex] || inputs[proteinIndex]) {
       
         Output();
       
@@ -42,8 +42,7 @@ public class CellIO : MonoBehaviour {
     }
     
     else if (type == InfoStrings.ribosome) {
-      if (inputs[atpIndex] && inputs[mrnaIndex]) {
-      
+      if (inputs[atpIndex] && inputs[mrnaIndex] && inputs[aminoIndex]) {
         Output();
       
       }
@@ -93,7 +92,13 @@ public class CellIO : MonoBehaviour {
 	    inputs[mrnaIndex] = true;
         Destroy (other.gameObject);
 
-	  }	  
+	  }
+	  
+	  if (otherType == InfoStrings.amino) {
+	    inputs[aminoIndex] = true;
+	    Destroy (other.gameObject);
+	  
+	  }
 	}
   }
   
@@ -107,9 +112,17 @@ public class CellIO : MonoBehaviour {
     }
     
     else if (type == InfoStrings.nucleus) {
-	  GameObject.Instantiate(Prefabs.mrna, 
-	    transform.position, transform.rotation);
-      
+      if (inputs[atpIndex]) {
+	    GameObject.Instantiate(Prefabs.mrna, 
+	      transform.position, transform.rotation);
+	  }
+	  
+	  else if (inputs[proteinIndex]) {
+	    GameObject.Instantiate (Prefabs.ribosome,
+	      transform.position, transform.rotation);
+	    GameObject.Instantiate (Prefabs.mitochondria,
+	      transform.position, transform.rotation);
+	  }
     }
     
     else if (type == InfoStrings.ribosome) {
@@ -117,7 +130,7 @@ public class CellIO : MonoBehaviour {
 	    transform.position, transform.rotation);
     }
     
-    GetComponent<AudioSource>().Play ();
+   // GetComponent<AudioSource>().Play ();
     inputs = new bool[numInputs];
   
   }

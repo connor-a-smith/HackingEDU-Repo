@@ -5,10 +5,10 @@ public class RandomVelocity : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+	/*
 	  GetComponent<Rigidbody>().AddForce (new Vector3(getRandom(), getRandom (), getRandom ()),
 	                                                  ForceMode.Impulse);
-	
+	*/
 	}
 	
 	// Update is called once per frame
