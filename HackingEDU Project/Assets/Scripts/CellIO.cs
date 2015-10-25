@@ -3,6 +3,9 @@ using System.Collections;
 
 public class CellIO : MonoBehaviour {
 
+  public AudioSource inputSound;
+  public AudioSource outputSound;
+
   const int numInputs = 6;
   
   //array and indeces for each different input piece
@@ -60,6 +63,7 @@ public class CellIO : MonoBehaviour {
 	  
 	    inputs[glucoseIndex] = true;
 	    Destroy (other.gameObject);
+		inputSound.Play ();
 				
 	  }
 	}
@@ -69,12 +73,14 @@ public class CellIO : MonoBehaviour {
 	  
 	    inputs[atpIndex] = true;
 	    Destroy (other.gameObject);
+				inputSound.Play ();
 	  }
 	  
 	  if (otherType == InfoStrings.protein) {
 	  
 	    inputs[proteinIndex] = true;
 	    Destroy(other.gameObject);
+				inputSound.Play ();
 	    
 	  }
 	}
@@ -84,6 +90,7 @@ public class CellIO : MonoBehaviour {
 	  
 	    inputs[atpIndex] = true;
 	    Destroy (other.gameObject);
+				inputSound.Play ();
 	    
 	  }
 	  
@@ -91,12 +98,14 @@ public class CellIO : MonoBehaviour {
 	  
 	    inputs[mrnaIndex] = true;
         Destroy (other.gameObject);
+				inputSound.Play ();
 
 	  }
 	  
 	  if (otherType == InfoStrings.amino) {
 	    inputs[aminoIndex] = true;
 	    Destroy (other.gameObject);
+				inputSound.Play ();
 	  
 	  }
 	}
@@ -130,8 +139,8 @@ public class CellIO : MonoBehaviour {
 	    transform.position, transform.rotation);
     }
     
-   // GetComponent<AudioSource>().Play ();
     inputs = new bool[numInputs];
+    outputSound.Play ();
   
   }
 }
