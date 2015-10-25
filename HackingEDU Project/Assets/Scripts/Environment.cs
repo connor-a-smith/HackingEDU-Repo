@@ -30,6 +30,7 @@ public class Environment : MonoBehaviour {
 	                             -otherVector.z * Random.Range (1.3f, 2.3f));
 	
 	  otherRigid.AddForce (otherVector, ForceMode.Impulse);
+	  GetComponent<AudioSource>().Play ();
 	
 	}
 	

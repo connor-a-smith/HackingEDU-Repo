@@ -117,6 +117,7 @@ public class CellIO : MonoBehaviour {
 	    transform.position, transform.rotation);
     }
     
+    GetComponent<AudioSource>().Play ();
     inputs = new bool[numInputs];
   
   }
