@@ -25,9 +25,9 @@ public class Environment : MonoBehaviour {
 	  
 	  Vector3 otherVector = otherRigid.velocity;
 	  
-	  otherVector = new Vector3 (-otherVector.x * Random.Range (1.5f, 2.5f),
-	                             -otherVector.y * Random.Range (1.5f, 2.5f),
-	                             -otherVector.z * Random.Range (1.5f, 2.5f));
+	  otherVector = new Vector3 (-otherVector.x * Random.Range (1.3f, 2.3f),
+	                             -otherVector.y * Random.Range (1.3f, 2.3f),
+	                             -otherVector.z * Random.Range (1.3f, 2.3f));
 	
 	  otherRigid.AddForce (otherVector, ForceMode.Impulse);
 	

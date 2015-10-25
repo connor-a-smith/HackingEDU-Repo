@@ -41,7 +41,6 @@ public class GrabThrow : MonoBehaviour {
 	  
 	    if (Input.GetMouseButtonDown(0)) {
 	  
-		  Debug.Log("GRABBED OBJECT IS: " + grabbedObject);
 		  grabbedObject.transform.parent = null;
 	      grabbedObject.GetComponent<Rigidbody>().AddForce(this.transform.forward * 10, ForceMode.Impulse);
 	      grabbedObject = null;
