@@ -23,6 +23,7 @@ public class CellIO : MonoBehaviour {
   void Start () {
   
     type = GetComponent<Info>().getType ();
+	for (int i = 0; i < inputs.Length; i++) { inputs[i] = false; }
  	
   }
 	
@@ -30,14 +31,14 @@ public class CellIO : MonoBehaviour {
   void Update () {
   
     if (type == InfoStrings.mitochondria) {
-			if (inputs[glucoseIndex]) {
+	  if (inputs[glucoseIndex] == true) {
         Output();
         
       }
     }
     
     else if (type == InfoStrings.nucleus) {
-      if (inputs[atpIndex] || inputs[proteinIndex]) {
+      if (inputs[atpIndex] == true || inputs[proteinIndex] == true) {
       
         Output();
       
@@ -45,7 +46,8 @@ public class CellIO : MonoBehaviour {
     }
     
     else if (type == InfoStrings.ribosome) {
-      if (inputs[atpIndex] && inputs[mrnaIndex] && inputs[aminoIndex]) {
+      if (inputs[atpIndex] == true && inputs[mrnaIndex] == true && inputs[aminoIndex] == true) {
+        Debug.Log (inputs[mrnaIndex]);
         Output();
       
       }
@@ -112,7 +114,7 @@ public class CellIO : MonoBehaviour {
   }
   
   /* outputs appropriate prefabs and resets inputs */
-  void Output() {
+  private void Output() {
   
     if (type == InfoStrings.mitochondria) {
       GameObject.Instantiate(Prefabs.atp, 
@@ -139,7 +141,6 @@ public class CellIO : MonoBehaviour {
 	    transform.position, transform.rotation);
     }
     
-    inputs = new bool[numInputs];
     outputSound.Play ();
   
   }
