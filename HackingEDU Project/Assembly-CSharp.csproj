@@ -47,6 +47,8 @@
   <ItemGroup>
      <Compile Include="Assets\Dolby_Audio_Plugin\Samples\CsDSControl.cs" />
      <Compile Include="Assets\Dolby_Audio_Plugin\Script\DolbyController.cs" />
+     <Compile Include="Assets\RandomVelocity.cs" />
+     <Compile Include="Assets\ReverseNormals.cs" />
      <Compile Include="Assets\Scripts\CellIO.cs" />
      <Compile Include="Assets\Scripts\Environment.cs" />
      <Compile Include="Assets\Scripts\GenerateRandomFromFolder.cs" />

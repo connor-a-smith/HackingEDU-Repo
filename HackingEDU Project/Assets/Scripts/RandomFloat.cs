@@ -3,13 +3,13 @@ using System.Collections;
 
 public class RandomFloat : MonoBehaviour {
 
-    private float environmentRadius;
+    private Vector3 environmentSize;
     private Vector3 environmentLocation;
 
 	//to store name of player
-	private float speed = 20; //to store speed of floating cell parts
-	private float minVal;
-	private float maxVal;
+	private float speed = 40; //to store speed of floating cell parts
+	private Vector3 minVal;
+	private Vector3 maxVal;
 	
 	bool check = false; //to check if in coroutine or not
 	float i; //to store time lerp counter
@@ -23,17 +23,14 @@ public class RandomFloat : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		
-		environmentRadius = Environment.environment.getRadius ();
+		environmentSize = Environment.environment.getSize();
 		environmentLocation = Environment.environment.getLocation();
 		startLocation = transform.position; //sets current location to start loc
 		destination = testVector; //sets desintation of float to 0
 		
 		
-		minVal = -environmentRadius;
-		maxVal = environmentRadius;
-		
-		Debug.Log ("MINVAL: " + minVal);
-		Debug.Log ("MAXVAL: " + maxVal);
+		minVal = new Vector3(-(environmentSize.x/2), -(environmentSize.y/2), -(environmentSize.z/2));
+		maxVal = new Vector3(environmentSize.x/2, environmentSize.y/2, environmentSize.z/2);
 		
 	}
 	
@@ -62,17 +59,17 @@ public class RandomFloat : MonoBehaviour {
 	  if (destination == testVector) {
 		
 	    //creates new random x, y, z location 
-		destination = new Vector3(environmentLocation.x + Random.Range (minVal, maxVal),
-		                          environmentLocation.y + Random.Range(minVal, maxVal), 
-		                          environmentLocation.z + Random.Range(minVal, maxVal));
+		destination = new Vector3(environmentLocation.x + Random.Range (minVal.x, maxVal.x),
+		                          environmentLocation.y + Random.Range(minVal.y, maxVal.y), 
+		                          environmentLocation.z + Random.Range(minVal.z, maxVal.z));
 		                         
 			
 		}
 		
 		startRotation = this.transform.rotation;
-		transform.LookAt(new Vector3(environmentLocation.x + Random.Range(minVal, maxVal), 
-		                             environmentLocation.y + Random.Range(minVal, maxVal), 
-		                             environmentLocation.z + Random.Range(minVal, maxVal)));
+		transform.LookAt(new Vector3(environmentLocation.x + Random.Range(minVal.x, maxVal.x), 
+		                             environmentLocation.y + Random.Range(minVal.y, maxVal.y), 
+		                             environmentLocation.z + Random.Range(minVal.z, maxVal.z)));
 		
 		endRotation = this.transform.rotation; 
 		

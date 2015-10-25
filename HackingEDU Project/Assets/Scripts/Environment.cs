@@ -3,13 +3,13 @@ using System.Collections;
 
 public class Environment : MonoBehaviour {
 
-	private float radius;
+	private Vector3 floatBox;
     public static Environment environment;
     
     void Awake() {
     
 		environment = this;
-		radius = GetComponent<SphereCollider>().radius;
+	//	floatBox = GetComponent<BoxCollider>().size;
     
     }
 
@@ -19,10 +19,22 @@ public class Environment : MonoBehaviour {
 	
 	}
 	
+	void OnTriggerExit(Collider other) {
+	
+	  Rigidbody otherRigid = other.GetComponent<Rigidbody>();
+	  
+	  Vector3 otherVector = otherRigid.velocity;
+	  
+	  otherVector = new Vector3 (-otherVector.x * Random.Range (1.5f, 2.5f),
+	                             -otherVector.y * Random.Range (1.5f, 2.5f),
+	                             -otherVector.z * Random.Range (1.5f, 2.5f));
+	
+	  otherRigid.AddForce (otherVector, ForceMode.Impulse);
+	
+	}
+	
 	// Update is called once per frame
 	void Update () {
-	
-	  Debug.Log (radius);
 	
 	}
 	
@@ -32,9 +44,9 @@ public class Environment : MonoBehaviour {
 	
 	}
 	
-	public float getRadius() {
+	public Vector3 getSize() {
 	
-	  return radius;
+	  return floatBox;
 	  
 	}
 	

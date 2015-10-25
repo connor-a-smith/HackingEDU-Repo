@@ -52,7 +52,6 @@ public class CellIO : MonoBehaviour {
   
   /* Checks inputs */
   void OnTriggerEnter(Collider other) {
-  
 	
     string otherType = other.GetComponent<Info>().getType ();
 	
