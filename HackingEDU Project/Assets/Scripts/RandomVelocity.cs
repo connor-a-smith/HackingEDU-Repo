@@ -5,8 +5,6 @@ public class RandomVelocity : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
-      int random1 = (Random.Range(-3, 3));
 	
 	  GetComponent<Rigidbody>().AddForce (new Vector3(getRandom(), getRandom (), getRandom ()),
 	                                                  ForceMode.Impulse);
@@ -20,8 +18,8 @@ public class RandomVelocity : MonoBehaviour {
 	 
 	private float getRandom() {
 	
-	  float randomNum = Random.Range (-3, 3);
-	  if (randomNum == 0) randomNum = 1;
+	  float randomNum = Random.Range (-0.5f, 0.5f);
+	  if (randomNum == 0) randomNum = 0.5f;
 	  
 	  return randomNum;
 	
