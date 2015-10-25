@@ -73,14 +73,14 @@ public class CellIO : MonoBehaviour {
 	  
 	    inputs[atpIndex] = true;
 	    Destroy (other.gameObject);
-				inputSound.Play ();
+		inputSound.Play ();
 	  }
 	  
 	  if (otherType == InfoStrings.protein) {
 	  
 	    inputs[proteinIndex] = true;
 	    Destroy(other.gameObject);
-				inputSound.Play ();
+		inputSound.Play ();
 	    
 	  }
 	}
@@ -90,7 +90,7 @@ public class CellIO : MonoBehaviour {
 	  
 	    inputs[atpIndex] = true;
 	    Destroy (other.gameObject);
-				inputSound.Play ();
+		inputSound.Play ();
 	    
 	  }
 	  
@@ -98,14 +98,14 @@ public class CellIO : MonoBehaviour {
 	  
 	    inputs[mrnaIndex] = true;
         Destroy (other.gameObject);
-				inputSound.Play ();
+		inputSound.Play ();
 
 	  }
 	  
 	  if (otherType == InfoStrings.amino) {
 	    inputs[aminoIndex] = true;
 	    Destroy (other.gameObject);
-				inputSound.Play ();
+		inputSound.Play ();
 	  
 	  }
 	}

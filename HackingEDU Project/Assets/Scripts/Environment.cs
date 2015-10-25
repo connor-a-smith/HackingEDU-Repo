@@ -3,6 +3,9 @@ using System.Collections;
 
 public class Environment : MonoBehaviour {
 
+    public AudioSource bounceSound;
+    public AudioSource spawnSound;
+
     public GameObject[] spawnPoints = new GameObject[4];
     const int inputNums = 5;
     int[] randomInputs = new int[inputNums];
@@ -47,17 +50,25 @@ public class Environment : MonoBehaviour {
 	  Vector3 otherVector;
 	  otherVector = otherRigid.velocity;
 	
-	  if (otherType != InfoStrings.nucleus) {
-	    if (otherVector.magnitude > throwThreshold) {
+	  if (otherVector.magnitude > throwThreshold &&
+	               otherType != InfoStrings.nucleus &&
+	               otherType != InfoStrings.mitochondria &&
+	               otherType != InfoStrings.ribosome) {
+	               
+	    Destroy(other.gameObject);
+	                            
+	  }
+	  
+	  else {
+	  
 	      otherVector = new Vector3 (-otherVector.x * Random.Range (1.3f, 2.3f),
 	                                 -otherVector.y * Random.Range (1.3f, 2.3f),
 	                                 -otherVector.z * Random.Range (1.3f, 2.3f));
-	    }
+	
+	    otherRigid.AddForce (otherVector, ForceMode.Impulse);
+	    bounceSound.Play ();
+	
 	  }
-	
-	  otherRigid.AddForce (otherVector, ForceMode.Impulse);
-	  GetComponent<AudioSource>().Play ();
-	
 	}
 	
 	// Update is called once per frame
@@ -85,8 +96,10 @@ public class Environment : MonoBehaviour {
 	  
 	    Vector3 spawnLocation = spawnPoints[Random.Range (0,4)].transform.position;
 	  
-	    GameObject.Instantiate (randomFrequency[Random.Range (0,11)],
+	    GameObject.Instantiate (randomFrequency[Random.Range (0,10)],
 	                          spawnLocation, this.transform.rotation);
+	                          
+	    spawnSound.Play ();
 	  
 	  yield return null;
 	  }
